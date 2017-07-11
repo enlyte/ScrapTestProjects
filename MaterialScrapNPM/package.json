@@ -1,0 +1,15 @@
+{
+  "name": "materialscrapnpm",
+  "version": "1.0.0",
+  "description": "Testing Material Design",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap-material-design": "^0.5.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Steve Moy",
+  "license": "ISC"
+}
