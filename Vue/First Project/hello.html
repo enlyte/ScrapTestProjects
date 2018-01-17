@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<!-- <script type="text/javascript" src="https://unpkg.com/vue@2.5.13/dist/vue.js"></script> -->
+<script type="text/javascript" src="js/vue.js"></script>
+
+<div id="app">
+  <h1>{{msg}}</h1>
+  <!-- <a href="{{url}}">Home</a> Not Allowed-->
+  <a v-bind:href="url + '?myParam=1'">Home</a>
+  <p>
+    <form>
+      <!-- Name: <input type="text" v-bind:value="name" /> -->
+      Name: <input type="text" :value="name" />
+      Name Model Full: <input type="text" v-model="name" />
+      Name Model: <input type="text" v-model="names[0]" />
+      Name Lazy: <input type="text" v-model.lazy="names[1]" />
+      Number: <input type="text" v-model.number="number" />
+    </form>
+    Names from Array: {{names.join(', ')}}
+  </p>
+
+
+<fieldset>
+  <legend>Interests</legend>
+  <div>
+    <input type="checkbox" v-model="selectedInterests" value="Running"> Running
+  </div>
+  <div>
+    <input type="checkbox" v-model="selectedInterests" value="Cycling"> Cycling
+  </div>
+  <div>
+    <input type="checkbox" v-model="selectedInterests" value="Swimming"> Swimming
+  </div>
+</fieldset>
+<p>
+  <!-- you entered {{email}} -->
+  You selected {{selectedInterests.join(', ')}}
+  <!-- Join an array with , between them -->
+</p>
+
+</div>
+
+<script>
+  var vm = new Vue({
+    el: '#app',
+    delimiters: ["{{", "}}"],
+    data: {
+      msg: 'Hello from Vue!',
+      url: 'https://www.google.com',
+      name: 'Jimmy',
+      names: ['Mike', "Joe"],
+      number: 1234,
+      selectedInterests: ['Running', 'Swimming']
+    }
+  });
+</script>
+
+
+
+<!-- Scraps -->
+
+<!-- <h1>[[msg]]</h1> -->
+  <!-- // delimiters: ["[[", "]]"], -->
