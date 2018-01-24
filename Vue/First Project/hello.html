@@ -6,7 +6,16 @@
 <div id="app">
   <h1>{{msg}}</h1>
   <!-- <a href="{{url}}">Home</a> Not Allowed-->
-  <a v-bind:href="url + '?myParam=1'">Home</a>
+  <a v-bind:href="url + '?myParam=1'">{{link}}</a>
+
+  <div v-for="currentLink in linkDictionaryArray" >
+    <a :href="currentLink.link">{{currentLink.name}}</a>
+  </div>
+
+  <div v-for="(currentLink,index) in linkDictionary" >
+    <a :href="currentLink">{{index}}</a>
+  </div>
+
   <p>
     <form>
       <!-- Name: <input type="text" v-bind:value="name" /> -->
@@ -22,6 +31,11 @@
 
 <fieldset>
   <legend>Interests</legend>
+
+  <div v-for="interest in interests" >
+    <input type="checkbox" v-model="selectedInterests" :value="interest"> {{interest}}
+  </div>
+
   <div>
     <input type="checkbox" v-model="selectedInterests" value="Running"> Running
   </div>
@@ -32,11 +46,35 @@
     <input type="checkbox" v-model="selectedInterests" value="Swimming"> Swimming
   </div>
 </fieldset>
-<p>
+
+<!-- V-SHOW - hide and show conditionally -->
+<p v-show="selectedInterests.length > 0">
   <!-- you entered {{email}} -->
-  You selected {{selectedInterests.join(', ')}}
-  <!-- Join an array with , between them -->
+  You selected: {{selectedInterests.join(', ')}}
 </p>
+<!-- V-IF Statement - Completely removes element-->
+<p v-if="selectedInterests.length  == 3"> You must be active!</p>
+<p v-else-if="selectedInterests.length > 0">
+  <!-- you entered {{email}} -->
+  You selected: {{selectedInterests.join(', ')}}
+</p>
+<!-- V-Else After V-IF -->
+<p v-else>Please Select at least one interest.</p>
+
+<!-- // Interest Objects / Array of Dictionaries -->
+<div v-for="(interest, index) in interestsObjects">
+  ID: {{interest.id}}, Value: {{interest.name}}, Index: {{index}}
+</div>
+
+</br>
+<!-- // Address - Dictionary with KV Pairs -->
+<div v-for="(value, key, index) in address">
+  <p>Key - {{key}}
+  Value - {{value}}
+  Index - {{index}} </p>
+</div>
+
+<div v-for="i in 3"> For Loop Range: {{i}} </div>
 
 </div>
 
@@ -45,12 +83,38 @@
     el: '#app',
     delimiters: ["{{", "}}"],
     data: {
-      msg: 'Hello from Vue!',
-      url: 'https://www.google.com',
+      msg: 'Vue',
+      link:'EDQ',
+      url: 'https://www.edq.com',
+      linkDictionaryArray: [{ 'name' : 'Google',
+                         'link' :'https://www.google.com'},
+                       { 'name' :'Facebook',
+                         'link' :'https://www.facebook.com'}
+                       ],
+
+      linkDictionary: {'Twitter'   : 'https://www.twitter.com',
+                       'Amazon' : 'https://www.amazon.com'
+                     },
       name: 'Jimmy',
       names: ['Mike', "Joe"],
       number: 1234,
-      selectedInterests: ['Running', 'Swimming']
+      selectedInterests: ['Running', 'Swimming'],
+      interests: ['Running', 'Cycling', 'Swimming', 'Boating'],
+      interestsObjects: [{
+           id: 1,
+           name: "Running"
+         }, {
+           id: 2,
+           name: "Hiking"
+         }, {
+           id: 3,
+           name: "Driving"
+         }],
+      address: {
+          street : "53 State Street",
+          city : "Boston",
+          state : "MA"
+      }
     }
   });
 </script>
@@ -61,3 +125,8 @@
 
 <!-- <h1>[[msg]]</h1> -->
   <!-- // delimiters: ["[[", "]]"], -->
+
+
+  <!-- {'Google'   : 'https://www.google.com',
+                   'Facebook' : 'https://www.facebook.com'
+} -->

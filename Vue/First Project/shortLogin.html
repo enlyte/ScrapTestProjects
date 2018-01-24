@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<script type="text/javascript" src="js/vue.js"></script>
+
+<div id="app">
+  <form>
+	   <button v-if="!loggedIn" v-on:click="logIn('Jim', $event)">Log in</button>
+     <button v-else @click.prevent="logOut">Log out</button>
+     <!-- .prevent // Event Modifier (Prevent Reload) -->
+     <!-- //msg = 'Welcome!' -->
+	    {{msg}}
+  </form>
+</div>
+
+<script>
+    new Vue({
+       el: '#app',
+       data: {
+           msg: '',
+           loggedIn: false,
+       },
+       methods: {
+         logIn: function(username, event) {
+           event.preventDefault();
+           this.loggedIn = true;
+           this.msg = 'Welcome, ' + username + ' !!!!';
+         },
+         logOut: function() {
+           this.loggedIn = false;
+           this.msg = 'Bye';
+         }
+       }
+    });
+</script>

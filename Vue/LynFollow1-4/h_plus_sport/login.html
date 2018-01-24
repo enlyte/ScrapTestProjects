@@ -95,51 +95,68 @@
             </div>
         </div>
         <div class="post-content section-inner thin">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script type="text/javascript" src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
 
-<div id="app">    
-	<button>Log in</button>        
-	{{msg}}    
+<div id="app">
+  <form>
+	   <button v-if="!loggedIn" v-on:click="logIn('Jim', $event)">Log in</button>
+     <button v-else @click.prevent="logOut">Log out</button>
+     <!-- .prevent // Event Modifier (Prevent Reload) -->
+     <!-- //msg = 'Welcome!' -->
+	    {{msg}}
+  </form>
 </div>
 
 <script>
     new Vue({
        el: '#app',
        data: {
-           msg: ''           
+           msg: '',
+           loggedIn: false,
+       },
+       methods: {
+         logIn: function(username, event) {
+           event.preventDefault();
+           this.loggedIn = true;
+           this.msg = 'Welcome, ' + username + ' !!!!';
+         },
+         logOut: function() {
+           this.loggedIn = false;
+           this.msg = 'Bye';
+         }
        }
     });
 </script>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </div>
     </div>
     <div class="clear"></div>

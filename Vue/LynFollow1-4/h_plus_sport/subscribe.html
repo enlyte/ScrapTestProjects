@@ -121,6 +121,11 @@
     <label for="email">Email</label> <input type="email" v-model.number="number" id="email">
 		<fieldset>
 			<legend>Interests</legend>
+
+      <div v-for="interest in interests" >
+        <input type="checkbox" v-model="selectedInterests" :value="interest"> {{interest}}
+      </div>
+
 			<div>
 				<input type="checkbox" v-model="selectedInterests" value="Running"> Running
 			</div>
@@ -132,10 +137,34 @@
 			</div>
 		</fieldset>
 		<input type="submit" value="Subscribe">
-    <p>
+
+    <!-- V-SHOW - hide and show conditionally -->
+    <p v-show="selectedInterests.length > 0">
       <!-- you entered {{email}} -->
-      You selected {{selectedInterests.join(', ')}}
+      You selected: {{selectedInterests.join(', ')}}
     </p>
+    <!-- V-IF Statement - Completely removes element-->
+    <p v-if="selectedInterests.length  == 3"> You must be active!</p>
+    <p v-else-if="selectedInterests.length > 0">
+      <!-- you entered {{email}} -->
+      You selected: {{selectedInterests.join(', ')}}
+    </p>
+    <!-- V-Else After V-IF -->
+    <p v-else>Please Select at least one interest.</p>
+
+    <!-- // Interest Objects / Array of Dictionaries -->
+    <div v-for="(interest, index) in interestsObjects">
+      ID: {{interest.id}}, Value: {{interest.name}}, Index: {{index}}
+    </div>
+
+    </br>
+    <!-- // Address - Dictionary with KV Pairs -->
+    <div v-for="(value, key, index) in address">
+      <p>{{index + 1}}. {{key}}: {{value}}
+       </p>
+    </div>
+
+    <div v-for="i in 10"> {{i}} </div>
 	</form>
 </div>
 
@@ -145,7 +174,24 @@
 	   data: {
 		   email: 'mike@example.com',
        number: '1234',
-       selectedInterests: ['Running']
+       selectedInterests: ['Running'],
+       interests: ['Running', 'Cycling', 'Swimming', 'Boating'],
+       interestsObjects: [{
+            id: 1,
+            name: "Running"
+          }, {
+            id: 2,
+            name: "Hiking"
+          }, {
+            id: 3,
+            name: "Driving"
+          }],
+       address: {
+           street : "53 State Street",
+           city : "Boston",
+           state : "MA"
+       }
+
 	   }
 	});
 </script>
