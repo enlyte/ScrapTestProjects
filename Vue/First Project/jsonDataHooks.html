@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<!-- <script type="text/javascript" src="https://unpkg.com/vue@2.5.13/dist/vue.js"></script> -->
+<script type="text/javascript" src="js/vue.js"></script>
+
+
+<script type="text/javascript" src="js/jquery-331.js"></script>
+
+
+<div id="app">
+    Got a question for our virtual agent? Just ask!
+    <input type="text" v-model="question">
+    {{response}}
+    <ul>
+      <!-- <li v-for="product in products">{{product.name}} : {{product.description}} </li> -->
+      <li v-for="product in products">{{product.image}}
+        <a :href="product.image">{{product.name}} Link</a>
+        <img :src="product.image" :class="picStyle"></img>
+        <!-- <a :href="currentLink.link">{{currentLink.name}}</a> -->
+      </li>
+    </ul>
+</div>
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            question: '',
+            response: '',
+            products:[],
+            picStyle: 'squareSize'
+        },
+          beforeCreate: function() {
+              console.log('beforeCreate');
+          },
+          created: function() {
+            this.question = 'A default question products';
+              console.log('created');
+          },
+          beforeMount: function() {
+              console.log('beforeMount');
+          },
+          mounted: function() {
+              console.log('mounted');
+          },
+          beforeUpdate: function() {
+              console.log('beforeUpdate');
+          },
+          updated: function() {
+              console.log('updated');
+          },
+          beforeDestroy: function() {
+              console.log('beforeDestroy');
+          },
+          destroyed: function() {
+              console.log('destroyed');
+          },
+        // computed: {
+        //   products: function() {
+        //     // This needs to return a value immediately, cant wait for AJAX response
+        //   }
+        // }
+        watch: { // Functions
+          question: function(newValue){
+            if (newValue.indexOf('products') > -1) {
+              this.response = 'Sure, I can list the products for you';
+              // http://www.hplussport.com/api/products
+              $.getJSON('http://www.hplussport.com/api/products')
+              .done(function(data) {
+                vm.products = data;
+              });
+            } else {
+              this.response = "Sorry, I don't understand that question."
+              this.products = [];
+            }
+          }
+        }
+    });
+</script>
+
+
+<style>
+  .squareSize {
+    width: 200px;
+    height: 200px;
+  }
+</style>
+
+
+
+
+<div id="app2">
+  <!-- <div class="square blue"> -->
+    <div class="square" :class="{blue: cold, red: hot}"></div>
+    <div :class="cssClasses"></div>
+    <input type="text" v-model="bgColorClass" />
+    <div :class="[squareClass, bgColorClass, {'dashed-border': selected}]"> </div>
+
+  </div>
+    <!-- // Use square, but only use blue if cold is true, and red/hot -->  </div>
+</div>
+
+<script>
+    var vm2 = new Vue({
+       el: '#app2',
+       data: {
+           cold: true,
+           hot: false,
+           cssClasses: { // Declared in data instead of linline
+             square: true,
+             'dashed-border': true,
+             blue: false
+           },
+           squareClass: 'square',
+           bgColorClass: 'red',
+           selected: true
+       }
+    });
+</script>
+
+<style>
+    .square {
+         width: 200px;
+         height: 200px;
+         margin-bottom: 20px;
+    }
+    .blue {
+        background-color: blue;
+    }
+    .red {
+        background-color: red;
+    }
+	.yellow {
+        background-color: yellow;
+    }
+    .dashed-border {
+        border: dashed 4px black;
+    }
+</style>

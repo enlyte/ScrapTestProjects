@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript" src="js/jquery-331.js"></script>
+
+<div id="app">
+    <product-list :products="theProducts" thetitle="Shop our award-winning product line"></product-list>
+</div>
+
+<script>
+
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+          theProducts:[]
+        },
+        created: function() {
+          $.getJSON('https://hplussport.com/api/products')
+            .done(function(data) {
+              vm.theProducts = data
+            })
+        }
+    });
+</script>
+
+
+<script type="text/javascript" src="js/index.js"></script>
