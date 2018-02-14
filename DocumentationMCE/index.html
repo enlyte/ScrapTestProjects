@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Doc Creator</title>
+
+	<!-- <link rel='shortcut icon' type='image/x-icon' href='img/favicon.ico' /> -->
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  </head>
+  <body>
+
+    <div style="padding-left: 80px; padding-right: 80px;">
+
+      <!-- <img src="img/ExperianDataQuality.jpg" width="200px" height="auto"> -->
+      <br/>
+      <h1>Doc Creator</h1>
+      </br>
+      <!-- <h3>Heading 3</h3>
+      <p>
+        Paragraph
+      </p>
+
+      <h3></h3>
+      <p>
+
+      </p> -->
+
+    </div>
+
+
+    <form method="post" id="form-mce" style="">
+        <div class="tinyTextSelected" id="tinyTextSelected"></div>
+    </form>
+    </br>
+
+
+    <button onclick="seeHTML();"  class="btn btn-primary">See HTML</button>
+        </br></br>
+
+    <button onclick="copyHTMLToClip();"  class="btn btn-primary">Copy to Clipboard</button>
+    </br></br>
+    <!-- <code id="htmlOutput"> </code> -->
+
+
+    <textarea id="htmlOutput" style="width: 700px; height: 250px;">  </textarea>
+    </br>
+
+    <blockquote>
+      <pre>
+        <code id="htmlOutput2">    </code>
+      </pre>
+    </blockquote>
+    <script>
+    var docInfoText = "";
+    // Get HTML of text with Button
+    function getHTML(){
+       docInfoText = tinyMCE.get('tinyTextSelected').getContent();
+       console.log(docInfoText);
+       return docInfoText;
+      //  document.getElementById('htmlOutput').innerHTML = docInfoText;
+    }
+
+    function seeHTML(){
+      var htmlText = getHTML();
+      htmlOutput.innerHTML = htmlText;
+      htmlOutput2.innerHTML = htmlText;
+      // htmlOutput.value = htmlText;
+    }
+
+      function copyHTMLToClip(){
+        var htmlText = getHTML();
+        copyFormatted(htmlText);
+
+        // htmlOutput.value = htmlText;
+
+
+        function copyFormatted (html) {
+          // Create container for the HTML
+          // [1]
+          var container = document.createElement('div')
+          container.innerHTML = html
+
+          // Hide element
+          // [2]
+          container.style.position = 'fixed'
+          container.style.pointerEvents = 'none'
+          container.style.opacity = 0
+
+          // Detect all style sheets of the page
+          var activeSheets = Array.prototype.slice.call(document.styleSheets)
+            .filter(function (sheet) {
+              return !sheet.disabled
+          })
+
+          // Mount the iframe to the DOM to make `contentWindow` available
+          // [3]
+          document.body.appendChild(container)
+
+          // Copy to clipboard
+          // [4]
+          window.getSelection().removeAllRanges()
+
+          var range = document.createRange()
+          range.selectNode(container)
+          window.getSelection().addRange(range)
+
+          // [5.1]
+          document.execCommand('copy')
+
+          // [5.2]
+          for (var i = 0; i < activeSheets.length; i++) activeSheets[i].disabled = true
+
+          // [5.3]
+          document.execCommand('copy')
+
+          // [5.4]
+          for (var i = 0; i < activeSheets.length; i++) activeSheets[i].disabled = false
+
+          // Remove the iframe
+          // [6]
+          document.body.removeChild(container)
+        }
+      }
+    </script>
+
+    <script src="node_modules/tinymce/tinymce.min.js"></script>
+    <script src="js/tinyMCE.js"></script>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+  </body>
+</html>

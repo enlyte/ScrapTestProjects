@@ -1,0 +1,15 @@
+{
+  "name": "tinymceExample",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "tinymce": "^4.6.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Steve Moy",
+  "license": "ISC"
+}

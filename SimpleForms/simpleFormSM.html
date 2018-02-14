@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Simple Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="/WebDemo/js/jquery.js"></script> -->
+    <!-- <link rel="stylesheet" type="text/css" href="/WebDemo/css/jquery-ui.css" /> -->
+    <!-- <script type="text/javascript" src="/WebDemo/js/jquery-ui.js"></script> -->
+    <!-- <script src="/WebDemo/js/respond.js"></script> -->
+
+    <!-- <script type="text/javascript" src="functions.js"></script> -->
+
+
+    <!-- <link href="/WebDemo/css/bootstrap.css" rel="stylesheet" media="screen"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div>
+        <div class="container">
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <h1 class="form-heading">Simple Form</h1>
+                </div>
+                <div class="form-group">
+
+                    <div class="col-lg-3 input-group-sm">
+                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
+                    </div>
+
+                  <!-- </div>
+                  <div class="form-group"> -->
+
+                    <div class="col-lg-3  input-group-sm">
+                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-6  input-group-sm">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-6  input-group-sm">
+                        <input type="text" class="form-control" id="addLine1" name="addLine1" placeholder="Address Line 1">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-6  input-group-sm">
+                        <input type="text" class="form-control" id="addLine2" name="addLine2" placeholder="Address Line 2">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-6  input-group-sm">
+                        <input type="text" class="form-control" id="city" name="city" placeholder="City">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-6  input-group-sm">
+                        <input type="text" class="form-control" id="state" name="state" placeholder="State">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-6  input-group-sm">
+                        <input type="text" class="form-control" id="zipCode" name="zipCode" placeholder="Zipcode">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-6  input-group-sm">
+                        <select id="country" class="form-control">
+                            <option value="USA">United States of America</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-offset-4">
+                        <button type="submit" onclick="sendData(); return false;" class="btn btn-primary">Search</button>
+                        <button type="button" onclick="clearForm(); return false;" class="btn btn-primary">Clear</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+
+var sendData = function () {
+
+    var data = {
+        action: "search",
+        firstname: $("#firstName").val(),
+        lastname: $("#lastName").val(),
+        email: $("#email").val(),
+        add1: $("#addLine1").val(),
+        add2: $("#addLine2").val(),
+        city: $("#city").val(),
+        state: $("#state").val()
+    };
+
+		console.log(data);
+};
+
+function clearForm() {
+	$("input:text").val("");
+	$("input[type='hidden']").val("");
+	$(".hidden").hide();
+};
+
+</script>
+
+<!-- Bootstrap -->
+<!-- Latest compiled and minified CSS -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+</html>
