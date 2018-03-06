@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Feature Request</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Vue -->
+	<script type="text/javascript" src="dist/vue.js"></script>
+
+  <!-- Favicon -->
+  <link rel='shortcut icon' type='image/x-icon' href='img/favicon.ico' />
+
+  <!-- JQuery -->
+  <script type="text/javascript" src="dist/jquery-3.3.1.min.js"></script>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+  <script href="css/style.css" rel="stylesheet"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <!-- <body> -->
+  <body style="font-family: 'Roboto', serif;">
+  <!-- <body style="font-family: 'Roboto', serif; background-color: #F5F5F5;"> -->
+<!-- https://www.w3schools.com/colors/colors_shades.asp -->
+    <div style="padding-left: 80px; padding-right: 80px;">
+
+      <img src="img/ExperianDataQuality.jpg" width="200px" height="auto">
+      <br/>
+      <h1 class="robotoFont">EDQ Feature Request</h1>
+      </br>
+
+	<div id="app">
+
+
+    <!-- <h1>{{msg}}</h1> -->
+    <div class="container pull-left" style="width: 65%;">
+      <form>
+
+      <!-- Opportunity Company Name -->
+      <div class="input-group">
+        <span class="input-group-addon" id="amount-span">Company Name</span>
+        <input type="text" class="form-control" placeholder="Enter a company name..." id="company-name-input" aria-describedby="basic-addon1">
+      </div></br>
+
+      <!-- Opportunity Link -->
+      <div class="input-group">
+        <span class="input-group-addon" id="amount-span">Opportunity Link</span>
+        <input type="text" class="form-control" placeholder="http://..." id="opportunity-link-input" aria-describedby="basic-addon1">
+      </div></br>
+
+      <!-- Opportunity Amount -->
+      <div class="input-group">
+        <span class="input-group-addon" id="amount-span">Opportunity Amount $</span>
+        <input type="number" class="form-control" placeholder="Enter an amount..." id="opportunity-amount-input" aria-describedby="basic-addon1">
+      </div></br>
+      <!-- onkeyup="composeEmail();" -->
+
+      <!-- Loss Type -->
+      <div class="input-group">
+        <span class="input-group-addon" id="loss-type-span">Revenue/Loss Type</span>
+        <select class="form-control" onchange="">
+          <option selected disabled>Choose Type</option>
+          <option value="New Business">New Business</option>
+          <option value="Renewal">Renewal</option>
+          <option value="Other">Other</option>
+          <option value="NA">N/A</option>
+        </select>
+        </div></br>
+
+      <!-- Product Selector -->
+      <div class="input-group" style="width: 100%;">
+        <!-- <li v-for="(product, index) in productsArray"> <a href="#">{{product}}</a> </li> -->
+          <span class="input-group-addon" id="product-span">Product</span>
+    <select class="form-control" onchange="selectedProduct(this);">
+
+        <!-- <option value="one">One</option> -->
+        <option selected disabled>Choose Product</option>
+        <option v-for="(product, index) in productsArray" :value="product">
+          {{product}}
+        </option>
+    </select>
+  </div></br>
+
+
+    <!-- Feature Selector -->
+    <!-- <div class="input-group" id="feature-selector" style="width: 100%; display:none;">
+      <span class="input-group-addon" id="product-span">Feature</span>
+      <select class="form-control" onchange="selectedProduct(this);">
+          <option selected disabled>Choose Feature</option>
+          <option v-for="(feature, index) in featuresDictionary" :value="feature">
+            {{feature}}
+          </option>
+      </select>
+      </div> -->
+
+      <div class="input-group" id="featureselector" style="width: 100%; visibility: hidden;">
+        <span class="input-group-addon" id="product-span">Feature</span>
+        <select class="form-control" id="feature-select" onchange="selectedFeature(this);">
+            <option selected disabled>Choose Feature</option>
+
+        </select>
+      </div>
+
+        <div class="input-group" id="newfeature" style="width: 100%; display: none;">
+          </br>
+          <!-- <span class="input-group-addon" id="product-span">New Feature</span> -->
+          <input type="text" class="form-control" placeholder="Enter a new feature name..." id="new-feature-input" aria-describedby="basic-addon1">
+        </br>
+      </div>
+
+
+    </br>
+
+    <div class="input-group" style="width: 100%;">
+      <label for="description-textarea">Description</label>
+      <textarea class="form-control" id="description-textarea" style="resize: vertical;" rows="3" placeholder="Please enter product feature feedback/issues"></textarea>
+
+    </div> </br>
+
+    <button type="button" class="btn btn-primary pull-right">Submit</button>
+    </br></br>
+
+
+
+    </form>
+  </div>
+  <!-- // End Div Container right -->
+
+
+
+	</div>
+</div>
+
+	<script src="js/functions.js">  </script>
+  <script src="js/productsFeaturesObjects.js"></script>
+
+  <script>
+	  var vm = new Vue({
+		el: '#app',
+		delimiters: ["{{", "}}"],
+		data: {
+		  msg: 'Hello from Vue!',
+      productsArray: fullProductsArray,
+      featuresDictionary: {
+        "Pro Web": ["Feature 1", "Feature 2"],
+        "Namesearch": ["Feature 1", "Feature 2"]
+      }
+		}
+	  });
+</script>
+
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="dist/bootstrap.min.js"></script>
+  </body>
+</html>
+
+
+
+<!--
+      <input type="text" class="textfield" value="" id="extra7" name="extra7" onkeypress="return isNumber(event)" />
+
+      <script type="text/javascript">
+function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if ( (charCode > 31 && charCode < 48) || charCode > 57) {
+            return false;
+        }
+        return true;
+    }
+</script> -->
