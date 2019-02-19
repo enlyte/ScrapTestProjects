@@ -1,20 +1,18 @@
-// https://medium.freecodecamp.org/how-to-implement-a-simple-hash-table-in-javascript-cb3b9c1f2997
-//http://www.mattzeunert.com/2017/02/01/implementing-a-hash-table-in-javascript.html
-
 let hash = require('string-hash')
 
-class DumbMap {
+class HashTable{
   constructor(){
     this.list = []
   }
 
   get(x){
     var i = hash(x)
+
     if(!this.list[i]){
       return undefined
     }
 
-    let result
+    var result
 
     this.list[i].forEach(pairs => {
       if(pairs[0] === x){
@@ -26,8 +24,7 @@ class DumbMap {
   }
 
   set(x,y){
-    let i = hash(x)
-
+    var i = hash(x)
     if(!this.list[i]){
       this.list[i] = []
     }
@@ -36,11 +33,7 @@ class DumbMap {
   }
 }
 
-var m = new DumbMap
+var m = new HashTable
 
-m.set("ASDF",5)
-
-m.get("1");
-m.get("ASDF");
-
-console.log(m.get("ASDF"));
+m.set("Hello", 1)
+console.log(m.get("Hello"))
