@@ -1,5 +1,4 @@
 
-var str = "string with spaces"
 
 function getLength(str){
   var count = 0
@@ -36,6 +35,7 @@ function replaceSpaces(str){
   return newString.join('')
 }
 
+var str = "string with spaces"
 console.log(replaceSpaces(str));
 
 
