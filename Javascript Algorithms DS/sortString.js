@@ -5,7 +5,7 @@
 // Sort: Then see if they are the same, one by one
 // Hash: Put them in a table with a count
 
-var str = " ACBDED"
+var str = " DCABDED"
 
 function sortString(str){
   var arr = str.split('')

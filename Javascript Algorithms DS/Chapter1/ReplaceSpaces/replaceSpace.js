@@ -31,23 +31,8 @@ function replaceSpaces(str){
 console.log(replaceSpaces(str));
 
 
-
-
-// function replaceSpaces(str){
-//   var arr = str.split('')
-//   // console.log(arr);
-//   var newString = ""
-//
-//   for(var i = 0; i < arr.length; i++){
-//     if(arr[i] === " "){
-//       for(var j = 0; j < arr.length; j++){
-//         if(j === i){
-//           newString += "%20"
-//         } else {
-//           newString += arr[j]
-//         }
-//       }
-//     }
+// arr.forEach(letter =>{
+//   if(letter === " "){
+//     count++
 //   }
-//   return newString
-// }
+// })
