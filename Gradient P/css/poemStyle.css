@@ -1,0 +1,177 @@
+/* https://codepen.io/jenniferpinai/pen/Zxdyzd?&page=1 */
+/* https://github.com/LisaDziuba/Awesome-Design-Tools */
+
+/* Set type preferences for headings. */
+
+h2 {
+  z-index: 1;
+  font-family: 'Gotham', 'Montserrat', sans-serif;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 40px;
+}
+
+/* Set display preferences for description. */
+
+.heading{
+  border: 30px;
+  margin: 30px;
+}
+
+.description {
+  z-index: 2;
+  margin: 10px 5% 15px 5%;
+  font-family: 'Gotham', 'Montserrat', sans-serif;
+  font-size: 14px;
+  text-align: center;
+  line-height: 1.45em;
+}
+
+#flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 700px;
+  margin: 0px auto;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+/* Set display preferences for poem. */
+
+.poem-border {
+  border-radius: 8px;
+  /* border: 4px; */
+  padding: 4px;
+  /* border-style: solid; */
+  /* border-color: black; */
+  /* Red */
+  /* background: -webkit-radial-gradient(rgb(237, 22, 22), rgb(74, 6, 6));
+  background: radial-gradient(rgb(237, 22, 22), rgb(74, 6, 6)); */
+}
+.poem {
+  width: 600px;
+  margin: auto;
+  /*padding: 10px 0;*/
+  font-family: Baskerville;
+  font-family: Garamond;
+  font-family: Impact;
+  font-family: Helvetica;
+  font-family: Perpetua;
+  font-family: Merriweather;
+  font-family: Georgia;
+  font-family: Gotham;
+  font-family: Montserrat;
+
+  font-size: 16px;
+  text-align: left;
+
+  margin: 20px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  padding-left: 45px;
+  padding-right: 35px;
+  border-radius: 8px;
+
+  color: white;
+
+  border: 2px;
+  border-style: solid;
+  border-color: white;
+
+  background: white;
+
+  /* blue */
+  /* background: -webkit-radial-gradient(rgb(22, 135, 237), rgb(20, 55, 90));
+  background: radial-gradient(rgb(22, 135, 237), rgb(20, 55, 90)); */
+
+  /* Red */
+  /* background: -webkit-radial-gradient(rgb(237, 22, 22), rgb(74, 6, 6));
+  background: radial-gradient(rgb(237, 22, 22), rgb(74, 6, 6)); */
+
+  /* Paper */
+  color: black;
+
+  /* background: -webkit-radial-gradient(rgb(221, 221, 221), rgb(200, 162, 117));
+  background: radial-gradient(rgb(221, 221, 221), rgb(200, 162, 117)); */
+
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 6px 12px 0 rgba(0,0,0,0.4);
+  transition: 0.3s;
+
+
+}
+
+.poem:hover {
+  box-shadow: 0 12px 24px 0 rgba(0,0,0,0.4);
+}
+
+/* Add spacing to each stanza. */
+
+p {
+  margin-bottom: 15px;
+  line-height: 1.45em;
+}
+
+/* Set type preferences for poem's headings.  */
+
+.poem h1,
+.poem h2 {
+  font-family: Baskerville;
+  font-family: Garamond;
+  font-family: Trebuchet;
+  font-family: Helvetica;
+  font-family: Perpetua;
+  font-family: Merriweather;
+  font-family: Georgia;
+  font-family: Gotham;
+  font-family: Montserrat;
+
+
+  font-weight: normal;
+  text-align: center;
+}
+
+/* Set display preferences for title of the poem. */
+
+.poem h1 {
+  font-size: 34px;
+  margin-bottom: 10px;
+}
+
+/* Set display preferences for name of the poet. */
+
+.poem h2 {
+  font-size: 22px;
+  font-style: italic;
+  margin-bottom: 30px;
+}
+
+/* Make the first letter a drop cap/initial. */
+
+.poem h2+p:first-letter {
+  float: left;
+  font-size: 40px;
+  margin: 12px 5px 0px 0px;
+}
+
+/* Set display preferences for first line of each stanza. */
+
+.poem p:first-line {
+  /* font-variant: small-caps;
+  letter-spacing: 1px; */
+}
+
+/* Add margin and padding at end of the poem. */
+
+.poem p:last-child {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: #F1F2F2;
+}

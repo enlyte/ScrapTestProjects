@@ -1,0 +1,19 @@
+
+
+/*Gradient: http://www.colinkeany.com/blend/ */
+
+html {
+  height: 100%;
+}
+body{
+  min-height: 100%;
+  background: -webkit-radial-gradient(rgb(22, 135, 237), rgb(20, 55, 90));
+  background: radial-gradient(rgb(22, 135, 237), rgb(20, 55, 90));
+  color: white;
+}
+.blue {
+
+  /* background: -webkit-radial-gradient(rgb(22, 135, 237), rgb(20, 55, 90));
+  background: radial-gradient(rgb(22, 135, 237), rgb(20, 55, 90));
+  height: 100%; */
+}
